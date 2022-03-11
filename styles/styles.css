@@ -1,5 +1,52 @@
 /* CSS Reset */
 
-* {
-    background-color: rgb(34, 38, 61);
+/* try and position text-container at bottom of containers */
+
+body {
+    background-image: url("/images/hoth.jpg");
+    /* background-color: rgb(132, 149, 167); */
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+    height: 100vh;
+}
+
+/* Page Wrapper */
+.container {
+    position: relative;
+    padding: 20px;
+    border: 2px red solid;
+    height: 85vh;
+}
+
+/* Container for Weather Elements */
+.text-container {
+    position: absolute;
+    bottom: 20px;
+    flex-direction: column;
+    height: fit-content;
+    width: auto;
+    padding: 3em;
+}
+
+/* temp, weather description, and Star Wars planet styling */
+.temp-container {
+    border: 2px red solid;
+    width: fit-content;
+    padding: 0;
+    font-size: 2em;
+}
+
+.weather-description-container {
+    border: 2px red solid;
+    width: fit-content;
+    padding: 0.2em;
+    margin-top: 0.5em;
+}
+
+.planet-container {
+    border: 2px red solid;
+    width: fit-content;
+    padding: 0.2em;
+    margin-top: 0.5em;
 }
