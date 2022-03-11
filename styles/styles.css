@@ -1,22 +1,19 @@
 /* CSS Reset */
 
-/* try and position text-container at bottom of containers */
-
 body {
-    background-image: url("/images/hoth.jpg");
+    /* background-image: url("/images/hoth.jpg"); */
     /* background-color: rgb(132, 149, 167); */
-    background-repeat: no-repeat;
+    /* background-repeat: no-repeat;
     background-size: cover;
     overflow: hidden;
-    height: 100vh;
+    height: 100vh; */
 }
 
-/* Page Wrapper */
-.container {
-    position: relative;
-    padding: 20px;
-    border: 2px red solid;
-    height: 85vh;
+.background-image {
+    background-repeat: no-repeat;
+    /* background-size: cover; */
+    overflow: hidden;
+    height: 100vh;
 }
 
 /* Container for Weather Elements */

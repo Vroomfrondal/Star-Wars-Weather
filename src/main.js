@@ -1,9 +1,27 @@
-checkLocationPermission = () => {
+const checkLocationPermission = () => {
     // get coordinates of user for use in Open Weather API
     if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition((position) => {
-            getWeather(position.coords.latitude, position.coords.longitude)
-        })
+        navigator.geolocation.getCurrentPosition(
+            (position) => {
+                getWeather(position.coords.latitude, position.coords.longitude)
+            },
+            (error) => {
+                switch (error.code) {
+                    case error.PERMISSION_DENIED:
+                        alert("Turn on location services or open the website on desktop")
+                        break
+                    case error.POSITION_UNAVAILABLE:
+                        alert("Turn on location services or open the website on desktop")
+                        break
+                    case error.TIMEOUT:
+                        alert("Turn on location services or open the website on desktop")
+                        break
+                    case error.UNKNOWN_ERROR:
+                        alert("Turn on location services or open the website on desktop")
+                        break
+                }
+            }
+        )
     } else {
         console.log("Please enable location services in the browser to use this app.")
     }
@@ -23,12 +41,14 @@ const getWeather = async (latitude, longitude) => {
 }
 
 // Planet Algorithm will take into account temperature and forecast conditions and determine which planet to display
-determinePlanet = (filteredTemp) => {
+const determinePlanet = (filteredTemp) => {
+    const imageElement = document.querySelector("#image-container")
     let planet
 
     if (filteredTemp > 60) {
-        console.log("Display Planet")
-        planet = "Hi"
+        //console.log("Display Planet")
+        planet = "Kamino"
+        imageElement.innerHTML = `<img id="background-image" class="image-container" src="images/kamino.png" alt="Star Wars Photo" />`
     }
 
     return planet
@@ -42,9 +62,10 @@ const render = (weatherData) => {
 
     // populate DOM
     tempElement.textContent = filteredTemp
-    descElement.textContent = weatherData.weather[0].description
+    descElement.textContent = `It's ${weatherData.weather[0].description}, feels like`
     planetElement.textContent = determinePlanet(filteredTemp)
 
     console.log(weatherData) //debug
 }
+
 checkLocationPermission()
