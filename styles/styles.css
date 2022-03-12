@@ -1,49 +1,77 @@
 /* CSS Reset */
-
-body {
-    /* background-image: url("/images/hoth.jpg"); */
-    /* background-color: rgb(132, 149, 167); */
-    /* background-repeat: no-repeat;
-    background-size: cover;
-    overflow: hidden;
-    height: 100vh; */
-}
-
-.background-image {
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
     background-repeat: no-repeat;
-    /* background-size: cover; */
-    overflow: hidden;
-    height: 100vh;
+    background-size: cover;
+}
+body,
+h1,
+h2,
+h3,
+p {
+    margin: 0;
 }
 
-/* Container for Weather Elements */
-.text-container {
+/*  */
+.bg-image {
     position: absolute;
-    bottom: 20px;
-    flex-direction: column;
-    height: fit-content;
-    width: auto;
-    padding: 3em;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border: 3px solid red;
 }
 
-/* temp, weather description, and Star Wars planet styling */
-.temp-container {
-    border: 2px red solid;
+p {
     width: fit-content;
     padding: 0;
-    font-size: 2em;
+    margin: 0.5em;
+    color: #f3eed9;
+    border: 2px solid red;
 }
 
-.weather-description-container {
-    border: 2px red solid;
-    width: fit-content;
-    padding: 0.2em;
-    margin-top: 0.5em;
+/* Text Container Styling Starts */
+.text-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin: 1rem;
+    border: 2px solid red;
+}
+.main-text {
+    font-size: 4em;
+}
+.sub-text {
+    font-size: 3em;
 }
 
-.planet-container {
-    border: 2px red solid;
-    width: fit-content;
-    padding: 0.2em;
-    margin-top: 0.5em;
+/* Mobile Viewport */
+@media screen and (max-width: 1400px) {
+    .bg-image {
+        background-position: absolute;
+        background-size: cover;
+        height: 100vh;
+        border: 3px solid red;
+        opacity: 45%;
+    }
+}
+@media screen and (max-width: 800px) {
+    /* Text Container Styling Starts */
+    .text-container {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        margin: 1rem;
+        border: 2px solid red;
+    }
+
+    .main-text {
+        font-size: 2em;
+        font-weight: 900;
+    }
+
+    .sub-text {
+        font-size: 1em;
+    }
 }

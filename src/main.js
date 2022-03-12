@@ -41,14 +41,18 @@ const getWeather = async (latitude, longitude) => {
 }
 
 // Planet Algorithm will take into account temperature and forecast conditions and determine which planet to display
-const determinePlanet = (filteredTemp) => {
+const determinePlanet = (filteredTemp, conditions) => {
     const imageElement = document.querySelector("#image-container")
+    const newImage = document.createElement("img")
     let planet
 
-    if (filteredTemp > 60) {
-        //console.log("Display Planet")
-        planet = "Kamino"
-        imageElement.innerHTML = `<img id="background-image" class="image-container" src="images/kamino.png" alt="Star Wars Photo" />`
+    // Determine which planet to show
+    // Temperature
+    // Weather Conditions
+    if (filteredTemp < 60) {
+        planet = "Endor"
+        newImage.src = "/images/coruscant-night.jpg"
+        imageElement.appendChild(newImage)
     }
 
     return planet
@@ -56,13 +60,14 @@ const determinePlanet = (filteredTemp) => {
 
 const render = (weatherData) => {
     const tempElement = document.querySelector("#temp")
-    const descElement = document.querySelector("#description")
+    const descriptionElement = document.querySelector("#description")
     const planetElement = document.querySelector("#planet")
     const filteredTemp = weatherData.main.temp.toFixed()
+    const description = weatherData.weather[0].description
 
     // populate DOM
-    tempElement.textContent = filteredTemp
-    descElement.textContent = `It's ${weatherData.weather[0].description}, feels like`
+    tempElement.textContent = `${filteredTemp}°`
+    descriptionElement.textContent = `It's ${description}, feels like`
     planetElement.textContent = determinePlanet(filteredTemp)
 
     console.log(weatherData) //debug
