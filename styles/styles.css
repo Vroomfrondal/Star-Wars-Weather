@@ -3,8 +3,6 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-repeat: no-repeat;
-    background-size: cover;
 }
 body,
 h1,
@@ -14,30 +12,19 @@ p {
     margin: 0;
 }
 
-/*  */
-.bg-image {
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-    border: 3px solid red;
-}
-
 p {
     width: fit-content;
     padding: 0;
     margin: 0.5em;
     color: #f3eed9;
-    border: 2px solid red;
+    /* border: 2px solid red; */
 }
-
-/* Text Container Styling Starts */
 .text-container {
     position: absolute;
     bottom: 0;
     left: 0;
     margin: 1rem;
-    border: 2px solid red;
+    /* border: 2px solid red; */
 }
 .main-text {
     font-size: 4em;
@@ -46,32 +33,20 @@ p {
     font-size: 3em;
 }
 
-/* Mobile Viewport */
-@media screen and (max-width: 1400px) {
-    .bg-image {
-        background-position: absolute;
-        background-size: cover;
-        height: 100vh;
-        border: 3px solid red;
-        opacity: 45%;
-    }
+.bg-image {
+    background: url("/images/bespin.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh;
+    width: auto;
 }
-@media screen and (max-width: 800px) {
-    /* Text Container Styling Starts */
-    .text-container {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        margin: 1rem;
-        border: 2px solid red;
-    }
 
-    .main-text {
-        font-size: 2em;
-        font-weight: 900;
-    }
-
-    .sub-text {
-        font-size: 1em;
-    }
+.tattoine-bg {
+    background: url("/images/hoth.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh;
+    width: auto;
 }

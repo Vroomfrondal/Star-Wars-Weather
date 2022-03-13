@@ -43,16 +43,13 @@ const getWeather = async (latitude, longitude) => {
 // Planet Algorithm will take into account temperature and forecast conditions and determine which planet to display
 const determinePlanet = (filteredTemp, conditions) => {
     const imageElement = document.querySelector("#image-container")
-    const newImage = document.createElement("img")
     let planet
 
-    // Determine which planet to show
-    // Temperature
-    // Weather Conditions
+    // determine which planet to show
     if (filteredTemp < 60) {
-        planet = "Endor"
-        newImage.src = "/images/coruscant-night.jpg"
-        imageElement.appendChild(newImage)
+        planet = "Tattoine"
+        imageElement.classList.remove("bg-image")
+        imageElement.classList.add("tattoine-bg")
     }
 
     return planet
@@ -66,7 +63,7 @@ const render = (weatherData) => {
     const description = weatherData.weather[0].description
 
     // populate DOM
-    tempElement.textContent = `${filteredTemp}°`
+    tempElement.textContent = `${filteredTemp}°F`
     descriptionElement.textContent = `It's ${description}, feels like`
     planetElement.textContent = determinePlanet(filteredTemp)
 
