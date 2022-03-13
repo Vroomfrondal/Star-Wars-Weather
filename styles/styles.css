@@ -4,6 +4,11 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+/* ==============
+   Global Styling
+   ============== 
+*/
 body,
 h1,
 h2,
@@ -16,9 +21,12 @@ p {
     width: fit-content;
     padding: 0;
     margin: 0.5em;
-    color: #f3eed9;
-    /* border: 2px solid red; */
 }
+
+/* ==============
+   Styling for Temp, Planet, and Description Elements
+   ============== 
+*/
 .text-container {
     position: absolute;
     bottom: 0;
@@ -26,13 +34,19 @@ p {
     margin: 1rem;
     /* border: 2px solid red; */
 }
+
 .main-text {
     font-size: 4em;
 }
+
 .sub-text {
     font-size: 3em;
 }
 
+/* ==============
+   Begin Background Image styling
+   ============== 
+*/
 .bg-image {
     background: url("/images/bespin.jpg");
     background-size: cover;
@@ -42,11 +56,99 @@ p {
     width: auto;
 }
 
-.tattoine-bg {
+/* Cold-day backgrounds */
+.hoth-bg {
     background: url("/images/hoth.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     height: 100vh;
     width: auto;
+    color: black;
+}
+
+/* Pretty day backgrounds 60-70f */
+
+.coruscant-bg {
+    background: url("/images/coruscant-day.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh;
+    width: auto;
+    color: rgb(243, 236, 236);
+    /* color: #bdbaa5; */
+}
+
+.naboo-bg {
+    background: url("/images/naboo.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh;
+    width: auto;
+    color: #f3eed9;
+}
+
+/* Forest or Foggy Day Backgrounds */
+.endor-bg {
+    background: url("/images/endor1.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh;
+    width: auto;
+    color: #f3eed9;
+}
+
+.dagobah-bg {
+    background: url("/images/dagobah.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh;
+    width: auto;
+    color: #f3eed9;
+}
+
+/* Rainy Backgrounds */
+.kamino-bg {
+    background: url("/images/kamino.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh;
+    width: auto;
+    color: #f3eed9;
+}
+
+.kashyyk-bg {
+    background: url("/images/kashyyyk.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh;
+    width: auto;
+    color: #f3eed9;
+}
+
+/* Really hot day Background */
+.bespin-bg {
+    background: url("/images/bespin.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh;
+    width: auto;
+    color: #f3eed9;
+}
+
+.tattoine-bg {
+    background: url("/images/tatooine.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh;
+    width: auto;
+    color: #f3eed9;
 }

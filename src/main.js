@@ -29,30 +29,20 @@ const checkLocationPermission = () => {
 
 //Used async/await because fetch returns a promise and I don't have to use .then :))
 const getWeather = async (latitude, longitude) => {
-    const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${config.OPEN_WEATHER_API_KEY}&units=imperial`)
+    // Use geolocation coordinates in fetch
+    //const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${config.OPEN_WEATHER_API_KEY}&units=imperial`)
+
+    // Test Variables Remove before deployment
+    const id = 5780993 // salt lake city
+    const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?id=5780993&appid=${config.OPEN_WEATHER_API_KEY}&units=imperial`)
+
     // ensure API is up and running
     if (response.status === 200) {
         const weatherData = await response.json()
         render(weatherData)
     } else {
-        console.log("error")
         throw new Error("Sorry, OpenWeather seems to be having issues with their API. Try again later.")
     }
-}
-
-// Planet Algorithm will take into account temperature and forecast conditions and determine which planet to display
-const determinePlanet = (filteredTemp, conditions) => {
-    const imageElement = document.querySelector("#image-container")
-    let planet
-
-    // determine which planet to show
-    if (filteredTemp < 60) {
-        planet = "Tattoine"
-        imageElement.classList.remove("bg-image")
-        imageElement.classList.add("tattoine-bg")
-    }
-
-    return planet
 }
 
 const render = (weatherData) => {
@@ -68,6 +58,38 @@ const render = (weatherData) => {
     planetElement.textContent = determinePlanet(filteredTemp)
 
     console.log(weatherData) //debug
+}
+
+// Planet Algorithm will take into account temperature and forecast conditions and determine which planet to display
+const determinePlanet = (filteredTemp) => {
+    const imageElement = document.querySelector("#image-container")
+    let planet
+
+    // determine which planet to show
+    if (filteredTemp <= 45) {
+        planet = "Hoth"
+        imageElement.classList.remove("bg-image")
+        imageElement.classList.add("hoth-bg")
+    } else if (filteredTemp >= 46 && filteredTemp <= 62) {
+        planet = "Coruscant"
+        imageElement.classList.remove("hoth-bg")
+        imageElement.classList.remove("bg-image")
+        imageElement.classList.add("coruscant-bg")
+    } else if (filteredTemp >= 63 && filteredTemp <= 85) {
+        planet = "Tattoine"
+        imageElement.classList.remove("coruscant-bg")
+        imageElement.classList.add("tattoine-bg")
+    } else if (filteredTemp >= 86) {
+        planet = "Bespin"
+        imageElement.classList.remove("tattoine-bg")
+        imageElement.classList.add("bespin-bg")
+    } else {
+        planet = "Coruscant"
+        imageElement.classList.remove("bespin-bg")
+        imageElement.classList.add(".coruscant-bg")
+    }
+
+    return planet
 }
 
 checkLocationPermission()
