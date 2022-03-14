@@ -30,11 +30,11 @@ const checkLocationPermission = () => {
 //Used async/await because fetch returns a promise and I don't have to use .then :))
 const getWeather = async (latitude, longitude) => {
     // Use geolocation coordinates in fetch
-    //const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${config.OPEN_WEATHER_API_KEY}&units=imperial`)
+    const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${config.OPEN_WEATHER_API_KEY}&units=imperial`)
 
     // Test Variables Remove before deployment
-    const id = 5780993 // salt lake city
-    const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?id=5780993&appid=${config.OPEN_WEATHER_API_KEY}&units=imperial`)
+    //const id = 5809844
+    //const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?id=${id}&appid=${config.OPEN_WEATHER_API_KEY}&units=imperial`)
 
     // ensure API is up and running
     if (response.status === 200) {
@@ -68,28 +68,45 @@ const determinePlanet = (filteredTemp) => {
     // determine which planet to show
     if (filteredTemp <= 45) {
         planet = "Hoth"
-        imageElement.classList.remove("bg-image")
-        imageElement.classList.add("hoth-bg")
-    } else if (filteredTemp >= 46 && filteredTemp <= 62) {
+        updateImage(imageElement, "Hoth-bg")
+        //render()
+    } else if (filteredTemp <= 65) {
+        planet = "Naboo"
+        updateImage(imageElement, "naboo-bg")
+        //render()
+    } else if (filteredTemp <= 75) {
         planet = "Coruscant"
-        imageElement.classList.remove("hoth-bg")
-        imageElement.classList.remove("bg-image")
-        imageElement.classList.add("coruscant-bg")
-    } else if (filteredTemp >= 63 && filteredTemp <= 85) {
+        updateImage(imageElement, "coruscant-bg")
+        //render()
+    } else if (filteredTemp <= 81) {
         planet = "Tattoine"
-        imageElement.classList.remove("coruscant-bg")
-        imageElement.classList.add("tattoine-bg")
-    } else if (filteredTemp >= 86) {
+        updateImage(imageElement, "tattoine-bg")
+        //render()
+    } else if (filteredTemp <= 86) {
         planet = "Bespin"
-        imageElement.classList.remove("tattoine-bg")
-        imageElement.classList.add("bespin-bg")
+        updateImage(imageElement, "bespin-bg")
+        //render()
     } else {
         planet = "Coruscant"
-        imageElement.classList.remove("bespin-bg")
-        imageElement.classList.add(".coruscant-bg")
+        updateImage(imageElement, "coruscant-bg")
+        //render()
     }
 
     return planet
 }
 
+//utility functions
+updateImage = (element, nameOfClass) => {
+    const imageElement = document.querySelector("#image-container")
+
+    imageElement.className = ""
+    imageElement.classList.add(nameOfClass)
+}
+
 checkLocationPermission()
+
+//todo:
+// add rain and fog into algorithm that determines weather
+// create header
+// add font
+// add default image to start when API is loading

@@ -24,15 +24,16 @@ p {
 }
 
 /* ==============
-   Styling for Temp, Planet, and Description Elements
+   Styling for Temp, Planet, and Description, header Elements
    ============== 
 */
 .text-container {
     position: absolute;
     bottom: 0;
     left: 0;
-    margin: 1rem;
-    /* border: 2px solid red; */
+    margin: 4rem;
+    border: 2px solid #f3eed9;
+    border-radius: 2rem;
 }
 
 .main-text {
@@ -41,6 +42,16 @@ p {
 
 .sub-text {
     font-size: 3em;
+}
+
+.title {
+    text-align: center;
+    color: black;
+}
+
+.subheading {
+    text-align: center;
+    color: black;
 }
 
 /* ==============
