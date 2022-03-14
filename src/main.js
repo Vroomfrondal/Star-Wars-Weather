@@ -30,11 +30,11 @@ const checkLocationPermission = () => {
 //Used async/await because fetch returns a promise and I don't have to use .then :))
 const getWeather = async (latitude, longitude) => {
     // Use geolocation coordinates in fetch
-    const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${config.OPEN_WEATHER_API_KEY}&units=imperial`)
+    //const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${config.OPEN_WEATHER_API_KEY}&units=imperial`)
 
     // Test Variables Remove before deployment
-    //const id = 5809844
-    //const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?id=${id}&appid=${config.OPEN_WEATHER_API_KEY}&units=imperial`)
+    const id = 5809844
+    const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?id=${id}&appid=${config.OPEN_WEATHER_API_KEY}&units=imperial`)
 
     // ensure API is up and running
     if (response.status === 200) {
@@ -51,6 +51,7 @@ const render = (weatherData) => {
     const planetElement = document.querySelector("#planet")
     const filteredTemp = weatherData.main.temp.toFixed()
     const description = weatherData.weather[0].description
+    const conditions = weatherData.weather[0].main // will contain: "Rain", "Clouds"
 
     // populate DOM
     tempElement.textContent = `${filteredTemp}°F`
@@ -58,45 +59,54 @@ const render = (weatherData) => {
     planetElement.textContent = determinePlanet(filteredTemp)
 
     console.log(weatherData) //debug
+    console.log(conditions)
 }
 
 // Planet Algorithm will take into account temperature and forecast conditions and determine which planet to display
-const determinePlanet = (filteredTemp) => {
-    const imageElement = document.querySelector("#image-container")
+const determinePlanet = (filteredTemp, conditions) => {
     let planet
 
-    // determine which planet to show
-    if (filteredTemp <= 45) {
+    // if ((conditions = "Rain")) {
+    //     planet = "Kamino"
+    //     updateImage("kamino-bg")
+    // } else if (conditions = "Clouds") {
+    //     planet =
+    // }
+
+    //Temperature conditions
+    if (filteredTemp <= 40) {
         planet = "Hoth"
-        updateImage(imageElement, "Hoth-bg")
-        //render()
+        updateImage("Hoth-bg")
+    } else if (filteredTemp <= 50) {
+        planet = "Naboo"
+        updateImage("naboo-bg-warmer")
     } else if (filteredTemp <= 65) {
         planet = "Naboo"
-        updateImage(imageElement, "naboo-bg")
-        //render()
+        updateImage("naboo-bg")
+    } else if (filteredTemp <= 70) {
+        planet = "Scariff"
+        updateImage("scariff-bg")
     } else if (filteredTemp <= 75) {
         planet = "Coruscant"
-        updateImage(imageElement, "coruscant-bg")
-        //render()
+        updateImage("coruscant-bg")
     } else if (filteredTemp <= 81) {
         planet = "Tattoine"
-        updateImage(imageElement, "tattoine-bg")
-        //render()
+        updateImage("tattoine-bg")
     } else if (filteredTemp <= 86) {
         planet = "Bespin"
-        updateImage(imageElement, "bespin-bg")
-        //render()
+        updateImage("bespin-bg")
     } else {
-        planet = "Coruscant"
-        updateImage(imageElement, "coruscant-bg")
-        //render()
+        planet = "Kashyyk"
+        updateImage("kashyyk-bg")
     }
+
+    // Rain Conditions
 
     return planet
 }
 
 //utility functions
-updateImage = (element, nameOfClass) => {
+updateImage = (nameOfClass) => {
     const imageElement = document.querySelector("#image-container")
 
     imageElement.className = ""
@@ -107,6 +117,8 @@ checkLocationPermission()
 
 //todo:
 // add rain and fog into algorithm that determines weather
-// create header
-// add font
+//    to include conditions into algo, you need to use || in some of the temp algos
+//    rain = endor, clear = ?
+// Fix header
+// Add Fonts
 // add default image to start when API is loading

@@ -24,7 +24,7 @@ p {
 }
 
 /* ==============
-   Styling for Temp, Planet, and Description, header Elements
+   Styling for Temp, Description, Elements, 
    ============== 
 */
 .text-container {
@@ -47,11 +47,13 @@ p {
 .title {
     text-align: center;
     color: black;
+    /* background-color: aqua; */
 }
 
 .subheading {
     text-align: center;
     color: black;
+    /* background-color: aqua; */
 }
 
 /* ==============
@@ -59,11 +61,12 @@ p {
    ============== 
 */
 .bg-image {
-    background: url("/images/bespin.jpg");
+    background: url("/images/kashyyyk.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     height: 100vh;
+    color: #f3eed9;
     width: auto;
 }
 
@@ -78,8 +81,7 @@ p {
     color: black;
 }
 
-/* Pretty day backgrounds 60-70f */
-
+/* Pretty day backgrounds 60-80f */
 .coruscant-bg {
     background: url("/images/coruscant-day.jpg");
     background-size: cover;
@@ -87,8 +89,7 @@ p {
     background-position: center;
     height: 100vh;
     width: auto;
-    color: rgb(243, 236, 236);
-    /* color: #bdbaa5; */
+    color: #f3eed9;
 }
 
 .naboo-bg {
@@ -99,6 +100,25 @@ p {
     height: 100vh;
     width: auto;
     color: #f3eed9;
+}
+.naboo-bg-warmer {
+    background: url("/images/Naboo-warmer.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh;
+    width: auto;
+    color: #f3eed9;
+}
+
+.scariff-bg {
+    background: url("/images/Scariff.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh;
+    width: auto;
+    color: black;
 }
 
 /* Forest or Foggy Day Backgrounds */
