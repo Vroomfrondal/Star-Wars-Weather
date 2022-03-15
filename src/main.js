@@ -27,38 +27,42 @@ const checkLocationPermission = () => {
     }
 }
 
-//Used async/await because fetch returns a promise and I don't have to use .then :))
+// Fetch returns a promise and I don't have to use .then :))
 const getCurrentWeather = async (latitude, longitude) => {
-    // geolocation coordinates in fetch
-    const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${config.OPEN_WEATHER_API_KEY}&units=imperial`)
+    // Fetches
+    const currentWeatherResponse = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${config.OPEN_WEATHER_API_KEY}&units=imperial`)
+    const fiveDayForcastResponse = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${config.OPEN_WEATHER_API_KEY}&units=imperial`)
 
     // Test Variables. Remove before deployment
     //const id = 5809844
-    //const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?id=${id}&appid=${config.OPEN_WEATHER_API_KEY}&units=imperial`)
+    //const currentWeatherResponse = await fetch(`https://api.openweathermap.org/data/2.5/weather?id=${id}&appid=${config.OPEN_WEATHER_API_KEY}&units=imperial`)
 
     // ensure API is up and running
-    if (response.status === 200) {
-        const weatherData = await response.json()
-        render(weatherData)
+    if (currentWeatherResponse.status === 200 && fiveDayForcastResponse.status === 200) {
+        const currentWeatherData = await currentWeatherResponse.json()
+        const fiveDayWeatherData = await fiveDayForcastResponse.json()
+        render(currentWeatherData, fiveDayWeatherData)
     } else {
         throw new Error("Sorry, OpenWeather seems to be having issues with their API. Try again later.")
     }
 }
 
-const render = (weatherData) => {
+const render = (currentWeatherData, fiveDayForcastResponse) => {
     const tempElement = document.querySelector("#temp")
     const descriptionElement = document.querySelector("#description")
     const planetElement = document.querySelector("#planet")
-    const filteredTemp = weatherData.main.temp.toFixed()
-    const conditions = weatherData.weather[0].main
-    const description = weatherData.weather[0].description
+    const filteredTemp = currentWeatherData.main.temp.toFixed()
+    const conditions = currentWeatherData.weather[0].main
+    const description = currentWeatherData.weather[0].description
 
     // populate DOM
     tempElement.textContent = `${filteredTemp}°F`
-    descriptionElement.textContent = `It's ${description}, feels like...`
+    descriptionElement.textContent = `It's ${description}, feels like the planet...`
     planetElement.textContent = determinePlanet(filteredTemp, conditions)
 
-    console.log(weatherData) //debug
+    //debug
+    console.log("Current", currentWeatherData)
+    console.log("Five Day:", fiveDayForcastResponse)
 }
 
 // Planet Algorithm will take into account temperature and forecast conditions and determine which planet to display
@@ -114,7 +118,18 @@ updateImage = (nameOfClass) => {
 checkLocationPermission()
 
 //todo:
-// add 5 day cards.
-// new fetch call, add function to checkLocationPermissions(), add new function
+// create 5 day forecast cards.
 // Fix header - lower padding
 // add default image to start when API is loading
+// Mobile viewport / clamp in CSS
+
+// to make 5-day-forecast-cards, in psuedocode:
+// need 5 diff divs (dom objects to render each day to)
+// Create CSS for card container
+//      CSS card container will need flexbox
+
+// what to do with rendered 5 day forcast: take high and low from each day and render onto a card
+// take low from start of day, take high from mid day (peak sunlight)
+// low will be on index 0.
+// high will be on index 3
+// in API response, every 7th index is a new day.

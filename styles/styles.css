@@ -66,18 +66,57 @@ p {
     background-color: #faf8f3ca;
     border: 1px solid black;
     border-radius: 2rem;
+    padding: 0.5rem;
 }
 
 .title {
     text-align: center;
     font-size: 3rem;
     color: black;
+    padding: 0.2rem;
 }
 
 .subheading {
     text-align: center;
     font-size: 1rem;
     color: black;
+    padding: 0.2rem;
+}
+
+/* ==============
+   Begin Cards styling
+   ============== 
+*/
+.cards-container {
+    padding-top: 15vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border: 3px solid black; */
+}
+
+.card-1,
+.card-2,
+.card-3,
+.card-4,
+.card-5 {
+    padding: 1rem 1rem;
+    margin: 1rem;
+    background-color: #faf8f3ca;
+    border: 1px solid black;
+    border-radius: 2rem;
+}
+
+.card-text-container {
+    display: flex;
+    align-items: center;
+}
+
+.temp-container {
+    display: flex;
+    flex-direction: column;
+    font-size: 1.5rem;
+    font-weight: 400;
 }
 
 /* ==============
