@@ -21,39 +21,57 @@ p {
 p {
     width: fit-content;
     padding: 0;
-    margin: 0.5em;
 }
 
 /* ==============
-   Styling for Temp, Description, Elements, header
+   Styling for Weather-top heading, center text div containing planet, "its like" and "out there"
    ============== 
 */
-.text-container {
+
+.top_heading {
     position: absolute;
-    bottom: 0;
-    left: 0;
-    margin: 4rem;
-    border: 1px solid black;
-    border-radius: 2rem;
-    background-color: #faf8f3ca;
+    left: 20%;
+    top: 20%;
+    transform: translate(-20%, -20%);
+    font-size: 2rem;
+    font-weight: 400;
 }
 
-.main-text {
-    font-size: 4em;
-    font-weight: 600;
-    padding: 0;
-    margin: 1rem;
+.flexbox_center_text_container {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
 }
 
-.planet-text {
-    font-size: 3em;
-    font-weight: 600;
-    margin: 1rem;
+.flexbox_center_text_item-top {
+    font-weight: 500;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    /* margin-left: 2em; */
 }
 
-.sub-text {
-    font-size: 1.4rem;
-    margin: 1rem;
+.flexbox_center_text_item-center {
+    font-size: 7rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    height: fit-content;
+}
+
+.planet_name {
+    text-align: center;
+    padding-left: 2rem;
+}
+
+.flexbox_center_text_item-bottom {
+    font-size: 1.5rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    right: 11rem;
+}
+
+.out_there {
+    margin-left: 14em;
 }
 
 .header-container {

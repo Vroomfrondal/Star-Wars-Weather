@@ -31,33 +31,28 @@ const checkLocationPermission = () => {
 const getCurrentWeather = async (latitude, longitude) => {
     // Fetches
     const currentWeatherResponse = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${config.OPEN_WEATHER_API_KEY}&units=imperial`)
-    const fiveDayForcastResponse = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${config.OPEN_WEATHER_API_KEY}&units=imperial`)
 
     // Test Variables. Remove before deployment
     //const id = 5809844
     //const currentWeatherResponse = await fetch(`https://api.openweathermap.org/data/2.5/weather?id=${id}&appid=${config.OPEN_WEATHER_API_KEY}&units=imperial`)
 
     // ensure API is up and running
-    if (currentWeatherResponse.status === 200 && fiveDayForcastResponse.status === 200) {
+    if (currentWeatherResponse.status === 200) {
         const currentWeatherData = await currentWeatherResponse.json()
-        const fiveDayWeatherData = await fiveDayForcastResponse.json()
-        render(currentWeatherData, fiveDayWeatherData)
+        renderDOM(currentWeatherData)
     } else {
         throw new Error("Sorry, OpenWeather seems to be having issues with their API. Try again later.")
     }
 }
 
-const render = (currentWeatherData, fiveDayForcastResponse) => {
+const renderDOM = (currentWeatherData, fiveDayForcastResponse) => {
     const tempElement = document.querySelector("#temp")
-    const descriptionElement = document.querySelector("#description")
     const planetElement = document.querySelector("#planet")
     const filteredTemp = currentWeatherData.main.temp.toFixed()
     const conditions = currentWeatherData.weather[0].main
-    const description = currentWeatherData.weather[0].description
 
     // populate DOM
-    tempElement.textContent = `${filteredTemp}°F`
-    descriptionElement.textContent = `It's ${description}, feels like the planet...`
+    tempElement.textContent = `Ahh. ${filteredTemp}°F, ${conditions}?`
     planetElement.textContent = determinePlanet(filteredTemp, conditions)
 
     //debug
@@ -116,20 +111,3 @@ updateImage = (nameOfClass) => {
 }
 
 checkLocationPermission()
-
-//todo:
-// create 5 day forecast cards.
-// Fix header - lower padding
-// add default image to start when API is loading
-// Mobile viewport / clamp in CSS
-
-// to make 5-day-forecast-cards, in psuedocode:
-// need 5 diff divs (dom objects to render each day to)
-// Create CSS for card container
-//      CSS card container will need flexbox
-
-// what to do with rendered 5 day forcast: take high and low from each day and render onto a card
-// take low from start of day, take high from mid day (peak sunlight)
-// low will be on index 0.
-// high will be on index 3
-// in API response, every 7th index is a new day.
