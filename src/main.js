@@ -57,7 +57,6 @@ const renderDOM = (currentWeatherData, fiveDayForcastResponse) => {
 
     //debug
     console.log("Current", currentWeatherData)
-    console.log("Five Day:", fiveDayForcastResponse)
 }
 
 // Planet Algorithm will take into account temperature and forecast conditions and determine which planet to display

@@ -51,40 +51,33 @@ p {
     /* margin-left: 2em; */
 }
 
+.its_like {
+    float: left;
+    padding-left: 4em;
+}
+
 .flexbox_center_text_item-center {
     font-size: 7rem;
     font-weight: 400;
     text-transform: uppercase;
     height: fit-content;
+    text-align: center;
 }
 
 .planet_name {
-    text-align: center;
-    padding-left: 2rem;
+    letter-spacing: 0.4em;
 }
 
 .flexbox_center_text_item-bottom {
     font-size: 1.5rem;
     font-weight: 500;
     text-transform: uppercase;
-    right: 11rem;
+    right: 11em;
 }
 
 .out_there {
-    margin-left: 14em;
-}
-
-.header-container {
-    position: absolute;
-    left: 0;
-    right: 0;
-    margin-left: auto;
-    margin-right: auto;
-    width: 38rem;
-    background-color: #faf8f3ca;
-    border: 1px solid black;
-    border-radius: 2rem;
-    padding: 0.5rem;
+    float: right;
+    padding-right: 4em;
 }
 
 .title {
