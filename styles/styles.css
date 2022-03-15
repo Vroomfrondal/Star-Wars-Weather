@@ -3,6 +3,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "Open Sans", sans-serif;
 }
 
 /* ==============
@@ -24,7 +25,7 @@ p {
 }
 
 /* ==============
-   Styling for Temp, Description, Elements, 
+   Styling for Temp, Description, Elements, header
    ============== 
 */
 .text-container {
@@ -32,28 +33,51 @@ p {
     bottom: 0;
     left: 0;
     margin: 4rem;
-    border: 2px solid #f3eed9;
+    border: 1px solid black;
     border-radius: 2rem;
+    background-color: #faf8f3ca;
 }
 
 .main-text {
     font-size: 4em;
+    font-weight: 600;
+    padding: 0;
+    margin: 1rem;
+}
+
+.planet-text {
+    font-size: 3em;
+    font-weight: 600;
+    margin: 1rem;
 }
 
 .sub-text {
-    font-size: 3em;
+    font-size: 1.4rem;
+    margin: 1rem;
+}
+
+.header-container {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    width: 38rem;
+    background-color: #faf8f3ca;
+    border: 1px solid black;
+    border-radius: 2rem;
 }
 
 .title {
     text-align: center;
+    font-size: 3rem;
     color: black;
-    /* background-color: aqua; */
 }
 
 .subheading {
     text-align: center;
+    font-size: 1rem;
     color: black;
-    /* background-color: aqua; */
 }
 
 /* ==============
@@ -66,7 +90,6 @@ p {
     background-repeat: no-repeat;
     background-position: center;
     height: 100vh;
-    color: #f3eed9;
     width: auto;
 }
 
@@ -78,18 +101,16 @@ p {
     background-position: center;
     height: 100vh;
     width: auto;
-    color: black;
 }
 
 /* Pretty day backgrounds 60-80f */
 .coruscant-bg {
-    background: url("/images/coruscant-day.jpg");
+    background: url("/images/coruscant-day-new.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     height: 100vh;
     width: auto;
-    color: #f3eed9;
 }
 
 .naboo-bg {
@@ -99,7 +120,6 @@ p {
     background-position: center;
     height: 100vh;
     width: auto;
-    color: #f3eed9;
 }
 .naboo-bg-warmer {
     background: url("/images/Naboo-warmer.jpg");
@@ -108,7 +128,6 @@ p {
     background-position: center;
     height: 100vh;
     width: auto;
-    color: #f3eed9;
 }
 
 .scariff-bg {
@@ -118,7 +137,6 @@ p {
     background-position: center;
     height: 100vh;
     width: auto;
-    color: black;
 }
 
 /* Forest or Foggy Day Backgrounds */
@@ -129,7 +147,6 @@ p {
     background-position: center;
     height: 100vh;
     width: auto;
-    color: #f3eed9;
 }
 
 .dagobah-bg {
@@ -139,7 +156,6 @@ p {
     background-position: center;
     height: 100vh;
     width: auto;
-    color: #f3eed9;
 }
 
 /* Rainy Backgrounds */
@@ -150,7 +166,6 @@ p {
     background-position: center;
     height: 100vh;
     width: auto;
-    color: #f3eed9;
 }
 
 .kashyyk-bg {
@@ -160,7 +175,6 @@ p {
     background-position: center;
     height: 100vh;
     width: auto;
-    color: #f3eed9;
 }
 
 /* Really hot day Background */
@@ -171,7 +185,6 @@ p {
     background-position: center;
     height: 100vh;
     width: auto;
-    color: #f3eed9;
 }
 
 .tattoine-bg {
@@ -181,5 +194,4 @@ p {
     background-position: center;
     height: 100vh;
     width: auto;
-    color: #f3eed9;
 }
