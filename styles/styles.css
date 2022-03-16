@@ -23,18 +23,45 @@ p {
     padding: 0;
 }
 
-/* ==============
-   Styling for Weather-top heading, center text div containing planet, "its like" and "out there"
-   ============== 
+/* ==========================================
+   Styling for Top/Bottom descriptions/headings, center text div containing planet, "its like" and "out there"
+   ==========================================
 */
 
 .top_heading {
     position: absolute;
-    left: 20%;
-    top: 20%;
+    left: 15%;
+    top: 12%;
     transform: translate(-20%, -20%);
-    font-size: 2rem;
+    font-size: 1.2em;
     font-weight: 400;
+}
+
+.bottom_heading_flex_container {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    right: 5%;
+    bottom: 7%;
+    transform: translate(-10%, -10%);
+    font-size: 1em;
+    font-weight: 400;
+}
+
+.description_flex_item_1 {
+    position: relative;
+    font-weight: 400;
+    flex-wrap: wrap;
+    flex-grow: 2;
+    max-width: 15rem;
+    padding-bottom: 3rem;
+    /* padding: 1rem;
+    margin: 1rem; */
+}
+
+.planet_message_flex_item_2 {
+    position: relative;
+    font-size: 0.3em;
 }
 
 .flexbox_center_text_container {
@@ -46,9 +73,8 @@ p {
 
 .flexbox_center_text_item-top {
     font-weight: 500;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     text-transform: uppercase;
-    /* margin-left: 2em; */
 }
 
 .its_like {
@@ -57,19 +83,18 @@ p {
 }
 
 .flexbox_center_text_item-center {
-    font-size: 7rem;
+    font-size: 6em;
     font-weight: 400;
     text-transform: uppercase;
-    height: fit-content;
-    text-align: center;
 }
 
 .planet_name {
     letter-spacing: 0.4em;
+    padding-left: 3rem;
 }
 
 .flexbox_center_text_item-bottom {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     font-weight: 500;
     text-transform: uppercase;
     right: 11em;
@@ -95,42 +120,6 @@ p {
 }
 
 /* ==============
-   Begin Cards styling
-   ============== 
-*/
-.cards-container {
-    padding-top: 15vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* border: 3px solid black; */
-}
-
-.card-1,
-.card-2,
-.card-3,
-.card-4,
-.card-5 {
-    padding: 1rem 1rem;
-    margin: 1rem;
-    background-color: #faf8f3ca;
-    border: 1px solid black;
-    border-radius: 2rem;
-}
-
-.card-text-container {
-    display: flex;
-    align-items: center;
-}
-
-.temp-container {
-    display: flex;
-    flex-direction: column;
-    font-size: 1.5rem;
-    font-weight: 400;
-}
-
-/* ==============
    Begin Background Image styling
    ============== 
 */
@@ -141,10 +130,11 @@ p {
     background-position: center;
     height: 100vh;
     width: auto;
+    color: #f1e8d6;
 }
 
 /* Cold-day backgrounds */
-.hoth-bg {
+.Hoth-bg {
     background: url("/images/hoth.jpg");
     background-size: cover;
     background-repeat: no-repeat;
@@ -155,29 +145,23 @@ p {
 
 /* Pretty day backgrounds 60-80f */
 .coruscant-bg {
-    background: url("/images/coruscant-day-new.jpg");
+    background: url("/images/coruscant.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     height: 100vh;
     width: auto;
+    color: #fcfbf9;
 }
 
-.naboo-bg {
-    background: url("/images/naboo.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    height: 100vh;
-    width: auto;
-}
 .naboo-bg-warmer {
-    background: url("/images/Naboo-warmer.jpg");
+    background: url("/images/naboo1.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     height: 100vh;
     width: auto;
+    color: #fcfbf9;
 }
 
 .scariff-bg {
@@ -244,4 +228,5 @@ p {
     background-position: center;
     height: 100vh;
     width: auto;
+    color: #f1e8d6;
 }

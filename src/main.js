@@ -33,7 +33,8 @@ const getCurrentWeather = async (latitude, longitude) => {
     const currentWeatherResponse = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${config.OPEN_WEATHER_API_KEY}&units=imperial`)
 
     // Test Variables. Remove before deployment
-    //const id = 5809844
+    //const id = 5809844 // seatle wa
+    //const id = 2017370 // russia lol
     //const currentWeatherResponse = await fetch(`https://api.openweathermap.org/data/2.5/weather?id=${id}&appid=${config.OPEN_WEATHER_API_KEY}&units=imperial`)
 
     // ensure API is up and running
@@ -45,7 +46,7 @@ const getCurrentWeather = async (latitude, longitude) => {
     }
 }
 
-const renderDOM = (currentWeatherData, fiveDayForcastResponse) => {
+const renderDOM = (currentWeatherData) => {
     const tempElement = document.querySelector("#temp")
     const planetElement = document.querySelector("#planet")
     const filteredTemp = currentWeatherData.main.temp.toFixed()
@@ -78,15 +79,12 @@ const determinePlanet = (filteredTemp, conditions) => {
         } else if (filteredTemp <= 50) {
             planet = "Naboo"
             updateImage("naboo-bg-warmer")
-        } else if (filteredTemp <= 65) {
-            planet = "Naboo"
-            updateImage("naboo-bg")
         } else if (filteredTemp <= 70) {
-            planet = "Scariff"
-            updateImage("scariff-bg")
-        } else if (filteredTemp <= 75) {
             planet = "Coruscant"
             updateImage("coruscant-bg")
+        } else if (filteredTemp <= 75) {
+            planet = "Scariff"
+            updateImage("scariff-bg")
         } else if (filteredTemp <= 81) {
             planet = "Tattoine"
             updateImage("tattoine-bg")
@@ -110,3 +108,7 @@ updateImage = (nameOfClass) => {
 }
 
 checkLocationPermission()
+
+// style bottom message thats planet specific
+// code up that message
+// renderDOM upgrades for all this
