@@ -29,11 +29,10 @@ const checkLocationPermission = () => {
 
 // Fetch returns a promise and I don't have to use .then :))
 const getCurrentWeather = async (latitude, longitude) => {
-    // Fetches
     const currentWeatherResponse = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${config.OPEN_WEATHER_API_KEY}&units=imperial`)
 
-    // Test Variables. Remove before deployment
-    //const id = 5809844 // seatle wa
+    // Test Locatons. Remove before deployment
+    //const id = 5809844 // Seatle, Wa
     //const id = 2017370 // russia lol
     //const currentWeatherResponse = await fetch(`https://api.openweathermap.org/data/2.5/weather?id=${id}&appid=${config.OPEN_WEATHER_API_KEY}&units=imperial`)
 
@@ -52,7 +51,6 @@ const renderDOM = (currentWeatherData) => {
     const filteredTemp = currentWeatherData.main.temp.toFixed()
     const conditions = currentWeatherData.weather[0].main
 
-    // populate DOM
     tempElement.textContent = `Ahh. ${filteredTemp}°F, ${conditions}?`
     planetElement.textContent = determinePlanet(filteredTemp, conditions)
 
@@ -64,8 +62,7 @@ const renderDOM = (currentWeatherData) => {
 const determinePlanet = (filteredTemp, conditions) => {
     let planet
 
-    console.log(conditions)
-    // conditions: rain, mist, clear, clouds
+    // conditions: rain, mist, clear, clouds, smoke
     if (conditions === "Rain") {
         planet = "Kamino"
         updateImage("kamino-bg")
@@ -109,6 +106,7 @@ updateImage = (nameOfClass) => {
 
 checkLocationPermission()
 
-// style bottom message thats planet specific
-// code up that message
-// renderDOM upgrades for all this
+// Todo:
+// 2) complete determineWeatherMessage( based on planet customize description of content)
+
+// 3) Fix Intial Loading Image

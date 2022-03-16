@@ -23,8 +23,32 @@ p {
     padding: 0;
 }
 
+a {
+    color: pink;
+    font-size: 0.7em;
+}
+
+a:visited {
+    color: pink;
+    font-size: 0.7em;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #111;
+    height: auto;
+    width: 100vw;
+    padding-top: 0.3em;
+    padding-bottom: 0.3em;
+    color: #fff;
+    opacity: 90%;
+}
+
 /* ==========================================
-   Styling for Top/Bottom descriptions/headings, center text div containing planet, "its like" and "out there"
+   Styling for Top/Bottom descriptions/headings, center text div containing planet, "its like" and "out there", footer
    ==========================================
 */
 
@@ -42,7 +66,7 @@ p {
     flex-direction: column;
     position: absolute;
     right: 5%;
-    bottom: 7%;
+    bottom: 10%;
     transform: translate(-10%, -10%);
     font-size: 1em;
     font-weight: 400;
@@ -55,8 +79,6 @@ p {
     flex-grow: 2;
     max-width: 15rem;
     padding-bottom: 3rem;
-    /* padding: 1rem;
-    margin: 1rem; */
 }
 
 .planet_message_flex_item_2 {
@@ -120,17 +142,35 @@ p {
 }
 
 /* ==============
+   Footer Styling
+   ============== 
+*/
+
+.footer_container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.footer_title {
+    font-size: 1em;
+}
+
+/* ==============
    Begin Background Image styling
    ============== 
 */
 .bg-image {
-    background: url("/images/kashyyyk.jpg");
+    background: url("/images/loading-bg.png");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     height: 100vh;
     width: auto;
     color: #f1e8d6;
+    opacity: 50%;
 }
 
 /* Cold-day backgrounds */
