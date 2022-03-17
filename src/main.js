@@ -1,3 +1,5 @@
+const searchCityElement = document.querySelector("#city-search")
+
 const checkLocationPermission = () => {
     // get coordinates of user for use in Open Weather API
     if (navigator.geolocation) {
@@ -27,7 +29,27 @@ const checkLocationPermission = () => {
     }
 }
 
-// Fetch returns a promise and I don't have to use .then :))
+// functions for searching and fetching a custom city based on input
+searchCityElement.addEventListener("search", (e) => {
+    // console.log(`Searching for: ${searchCityElement.value}`)
+    const cityName = `${searchCityElement.value}`
+    searchCity(cityName)
+})
+
+const searchCity = async (cityName) => {
+    const searchCityResponse = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${config.OPEN_WEATHER_API_KEY}&units=imperial`)
+
+    if (searchCityResponse.status === 200) {
+        const cityData = await searchCityResponse.json()
+        console.log(cityData)
+        renderDOM(cityData)
+    } else {
+        alert("Try a different city")
+        // set background to empty space?
+    }
+}
+
+// Async is promised based. Can use asyn/await instead of .then
 const getCurrentWeather = async (latitude, longitude) => {
     const currentWeatherResponse = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${config.OPEN_WEATHER_API_KEY}&units=imperial`)
 
@@ -73,19 +95,19 @@ const determinePlanet = (filteredTemp, conditions) => {
         if (filteredTemp <= 40) {
             planet = "Hoth"
             updateImage("Hoth-bg")
-        } else if (filteredTemp <= 50) {
+        } else if (filteredTemp <= 65) {
             planet = "Naboo"
             updateImage("naboo-bg-warmer")
-        } else if (filteredTemp <= 70) {
+        } else if (filteredTemp <= 72) {
             planet = "Coruscant"
             updateImage("coruscant-bg")
-        } else if (filteredTemp <= 75) {
+        } else if (filteredTemp <= 78) {
             planet = "Scariff"
             updateImage("scariff-bg")
         } else if (filteredTemp <= 81) {
             planet = "Tattoine"
             updateImage("tattoine-bg")
-        } else if (filteredTemp <= 86) {
+        } else if (filteredTemp <= 90) {
             planet = "Bespin"
             updateImage("bespin-bg")
         } else {
@@ -107,6 +129,10 @@ updateImage = (nameOfClass) => {
 checkLocationPermission()
 
 // Todo:
-// 2) complete determineWeatherMessage( based on planet customize description of content)
+// 2) complete determineWeatherMessage (based on planet, customize description of content)
 
 // 3) Fix Intial Loading Image
+// 4)
+// API call for current city. make sure to convert to lowercase
+//https://api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
+// create HTML header with 2 inputs: input textbox, and search button

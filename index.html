@@ -8,7 +8,7 @@
     <meta name="description" content="Tom Scott Inspired Star Wars Weather remade by Christopher Deleon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap">
     <link rel="icon" href="/images/favicon.png?v=2">
     <link rel="stylesheet" href="/styles/styles.css">
     <script defer src="/src/config.js"></script>
@@ -17,37 +17,47 @@
 
 <body>
     <div class="bg-image" id="image-container">
-    <div class="top_heading">
-        <p id="temp"></p>
-    </div>
+        <header>
+            <div class="header_container">
+                <p>Search a city: </p>
+                <div class="search-box">
+                    <button class="btn-search"><i class="fa fa-search"></i></button>
+                    <input type="search" class="input-search" placeholder="Enter a city..." id="city-search">
+                </div>
+            </div>
+        </header>
 
-    <section class="flexbox_center_text_container">
-        <div class="flexbox_center_text_item-top">
-            <p class="its_like">It's like</p>
-        </div>
-        <div class="flexbox_center_text_item-center">
-            <p class="planet_name" id="planet"></p>
-        </div>
-        <div class="flexbox_center_text_item-bottom">
-            <p class="out_there">out there.</p>
-        </div>
-    </section>
+        <section class="top_heading">
+            <p id="temp"></p>
+        </section>
 
-    <section class="bottom_heading_flex_container">
-        <div class="description_flex_item_1">
-            <p id="description">Cold, ice, freezing desolation.</p>
-        </div>
-        <div class="planet_message_flex_item_2">
-            <p>Bits of the death star may fall on your head.</p>
-        </div>
-    </section>
-    
-    <footer>
-        <div class="footer_container">
-            <h1 class="footer_title">Star Wars Weather by Chris</h1>
-            <p class="logos"><a href="https://www.topherdeleon.com/" target="_blank">My Website</a> | <a href="https://github.com/Vroomfrondal/StarWars-Weather" target="_blank">Github</a> | <a href="https://www.linkedin.com/in/topherdeleon/" target="_blank">LinkedIn</a></p>
-        </div>
-    </footer>
+        <section class="flexbox_center_text_container">
+            <div class="flexbox_center_text_item-top">
+                <p class="its_like">It's like</p>
+            </div>
+            <div class="flexbox_center_text_item-center">
+                <p class="planet_name" id="planet"></p>
+            </div>
+            <div class="flexbox_center_text_item-bottom">
+                <p class="out_there">out there.</p>
+            </div>
+        </section>
+
+        <section class="bottom_heading_flex_container">
+            <div class="description_flex_item_1">
+                <p id="description">Cold, ice, freezing desolation.</p>
+            </div>
+            <div class="planet_message_flex_item_2">
+                <p>Bits of the death star may fall on your head.</p>
+            </div>
+        </section>
+
+        <footer>
+            <div class="footer_container">
+                <h1 class="footer_title">Star Wars Weather by Chris</h1>
+                <p class="logos"><a href="https://www.topherdeleon.com/" target="_blank">My Website</a> | <a href="https://github.com/Vroomfrondal/StarWars-Weather" target="_blank">Github</a> | <a href="https://www.linkedin.com/in/topherdeleon/" target="_blank">LinkedIn</a></p>
+            </div>
+        </footer>
     </div>
 </body>
 </html>
