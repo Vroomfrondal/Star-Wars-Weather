@@ -1,7 +1,7 @@
 const searchCityElement = document.querySelector("#city-search")
 
+// get coordinates of device for use in API
 const checkLocationPermission = () => {
-    // get coordinates of user for use in Open Weather API
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
             (position) => {
@@ -29,36 +29,32 @@ const checkLocationPermission = () => {
     }
 }
 
-// functions for searching and fetching a custom city based on input
+// Searching a custom city based on user input
 searchCityElement.addEventListener("search", (e) => {
-    // console.log(`Searching for: ${searchCityElement.value}`)
-    const cityName = `${searchCityElement.value}`
+    const cityName = `${searchCityElement.value.toLowerCase()}`
     searchCity(cityName)
 })
 
 const searchCity = async (cityName) => {
     const searchCityResponse = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${config.OPEN_WEATHER_API_KEY}&units=imperial`)
 
+    // render response to screen if status is "OK"
     if (searchCityResponse.status === 200) {
         const cityData = await searchCityResponse.json()
-        console.log(cityData)
+
+        //console.log("City data:", cityData.name)
         renderDOM(cityData)
     } else {
-        alert("Try a different city")
-        // set background to empty space?
+        searchCityElement.value = ""
+        throw new Error("Sorry, OpenWeather seems to be having issues with their API. Try again later.")
     }
 }
 
-// Async is promised based. Can use asyn/await instead of .then
+// Async is promised based. Can use async/await instead of .then
 const getCurrentWeather = async (latitude, longitude) => {
     const currentWeatherResponse = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${config.OPEN_WEATHER_API_KEY}&units=imperial`)
 
-    // Test Locatons. Remove before deployment
-    //const id = 5809844 // Seatle, Wa
-    //const id = 2017370 // russia lol
-    //const currentWeatherResponse = await fetch(`https://api.openweathermap.org/data/2.5/weather?id=${id}&appid=${config.OPEN_WEATHER_API_KEY}&units=imperial`)
-
-    // ensure API is up and running
+    // render response to screen if status is "OK"
     if (currentWeatherResponse.status === 200) {
         const currentWeatherData = await currentWeatherResponse.json()
         renderDOM(currentWeatherData)
@@ -70,41 +66,43 @@ const getCurrentWeather = async (latitude, longitude) => {
 const renderDOM = (currentWeatherData) => {
     const tempElement = document.querySelector("#temp")
     const planetElement = document.querySelector("#planet")
+    //const descriptionElement = document.querySelector("#description")
     const filteredTemp = currentWeatherData.main.temp.toFixed()
     const conditions = currentWeatherData.weather[0].main
 
-    tempElement.textContent = `Ahh. ${filteredTemp}°F, ${conditions}?`
     planetElement.textContent = determinePlanet(filteredTemp, conditions)
+    tempElement.textContent = determineWeatherMessage(planet, filteredTemp, conditions)
+    //descriptionElement.textContent = determineFunMessage(planet)
 
-    //debug
-    console.log("Current", currentWeatherData)
+    // debug
+    console.log("Weather Data:", currentWeatherData)
 }
 
 // Planet Algorithm will take into account temperature and forecast conditions and determine which planet to display
 const determinePlanet = (filteredTemp, conditions) => {
     let planet
 
-    // conditions: rain, mist, clear, clouds, smoke
+    // Determine conditions, if none, run temp algo
     if (conditions === "Rain") {
         planet = "Kamino"
         updateImage("kamino-bg")
-    } else if (conditions === "Mist") {
+    } else if (conditions === "Mist" || conditions === "Fog") {
         planet = "Endor"
         updateImage("endor-bg")
     } else {
         if (filteredTemp <= 40) {
             planet = "Hoth"
             updateImage("Hoth-bg")
-        } else if (filteredTemp <= 65) {
+        } else if (filteredTemp <= 50) {
             planet = "Naboo"
             updateImage("naboo-bg-warmer")
-        } else if (filteredTemp <= 72) {
+        } else if (filteredTemp <= 65) {
             planet = "Coruscant"
             updateImage("coruscant-bg")
-        } else if (filteredTemp <= 78) {
+        } else if (filteredTemp <= 72) {
             planet = "Scariff"
             updateImage("scariff-bg")
-        } else if (filteredTemp <= 81) {
+        } else if (filteredTemp <= 78) {
             planet = "Tattoine"
             updateImage("tattoine-bg")
         } else if (filteredTemp <= 90) {
@@ -118,7 +116,31 @@ const determinePlanet = (filteredTemp, conditions) => {
     return planet
 }
 
-//utility functions
+const determineWeatherMessage = (planet, filteredTemp, conditions) => {
+    const currPlanet = planet.textContent.toLowerCase()
+    const currWeather = ` ${filteredTemp}°F, ${conditions}?`
+    let message = ""
+
+    if (currPlanet === "kamino") {
+        message = `Wow. ${currWeather}`
+    } else if (currPlanet === "endor") {
+        message = `Hmm. ${currWeather}`
+    } else if (currPlanet === "hoth") {
+        message = `Oh my. ${currWeather}`
+    } else if (currPlanet === "naboo") {
+        message = `Oh. ${currWeather}`
+    } else if (currPlanet === "tattoine") {
+        message = `Whew. ${currWeather}`
+    } else if (currPlanet === "bespin") {
+        message = `Yikes. ${currWeather}`
+    } else {
+        message = `Ahh. ${currWeather}`
+    }
+
+    return message
+}
+
+// Dynamically apply CSS background to according planet
 updateImage = (nameOfClass) => {
     const imageElement = document.querySelector("#image-container")
 
@@ -129,10 +151,4 @@ updateImage = (nameOfClass) => {
 checkLocationPermission()
 
 // Todo:
-// 2) complete determineWeatherMessage (based on planet, customize description of content)
-
-// 3) Fix Intial Loading Image
-// 4)
-// API call for current city. make sure to convert to lowercase
-//https://api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
-// create HTML header with 2 inputs: input textbox, and search button
+// 1) complete determineWeatherMessage() based on current weather by updating #description element.
