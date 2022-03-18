@@ -331,3 +331,54 @@ footer {
     background: url("/images/tatooine.jpg");
     color: #f1e8d6;
 }
+
+/* 
+Mobile Query
+*/
+
+/* Portrait and Landscape */
+@media screen and (max-width: 592px) {
+    .flexbox_center_text_container {
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .flexbox_center_text_item-top {
+        font-weight: 500;
+        font-size: 1.3rem;
+        text-transform: uppercase;
+    }
+
+    .its_like {
+        float: left;
+        padding-left: 4em;
+        font-size: 1em;
+    }
+
+    .flexbox_center_text_item-center {
+        font-size: 6em;
+        font-weight: 400;
+        text-transform: uppercase;
+    }
+
+    .planet_name {
+        letter-spacing: 0em;
+        padding-left: 3rem;
+        font-size: 1em;
+        color: blue;
+    }
+
+    .flexbox_center_text_item-bottom {
+        font-size: 1.3rem;
+        font-weight: 500;
+        text-transform: uppercase;
+        right: 11em;
+    }
+
+    .out_there {
+        float: right;
+        padding-right: 4em;
+    }
+}
