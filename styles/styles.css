@@ -31,14 +31,6 @@ a:visited {
     color: pink;
 }
 
-img {
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    height: 100vh;
-    width: auto;
-}
-
 header {
     position: absolute;
     top: 0;
@@ -146,7 +138,7 @@ footer {
  Begin page content
 } */
 
-.temp_container_header {
+.top_container {
     position: absolute;
     left: 15%;
     top: 12%;
@@ -155,40 +147,17 @@ footer {
     font-weight: 400;
 }
 
-.bottom_heading_flex_container {
+/* Start Center Container */
+.center_container {
+    position: fixed;
     display: flex;
     flex-direction: column;
-    position: absolute;
-    right: 5%;
-    bottom: 10%;
-    transform: translate(-10%, -10%);
-    font-size: 1em;
-    font-weight: 400;
-}
-
-.description_flex_item_1 {
-    position: relative;
-    font-size: 1.3em;
-    font-weight: 400;
-    flex-wrap: wrap;
-    flex-grow: 2;
-    max-width: 15rem;
-    padding-bottom: 2rem;
-}
-
-.planet_message_flex_item_2 {
-    position: relative;
-    font-size: 1em;
-}
-
-.flexbox_center_text_container {
-    position: fixed;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
 }
 
-.flexbox_center_text_item-top {
+.center_item_1 {
     font-weight: 500;
     font-size: 1.3rem;
     text-transform: uppercase;
@@ -199,7 +168,7 @@ footer {
     padding-left: 4em;
 }
 
-.flexbox_center_text_item-center {
+.center_item_2 {
     font-size: 6em;
     font-weight: 400;
     text-transform: uppercase;
@@ -210,7 +179,7 @@ footer {
     padding-left: 3rem;
 }
 
-.flexbox_center_text_item-bottom {
+.center_item_3 {
     font-size: 1.3rem;
     font-weight: 500;
     text-transform: uppercase;
@@ -222,18 +191,31 @@ footer {
     padding-right: 4em;
 }
 
-.title {
-    text-align: center;
-    font-size: 3rem;
-    color: black;
-    padding: 0.2rem;
+/* Start Bottom Container */
+.bottom_container {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    right: 5%;
+    bottom: 10%;
+    transform: translate(-10%, -10%);
+    font-size: 1em;
+    font-weight: 400;
 }
 
-.subheading {
-    text-align: center;
-    font-size: 1rem;
-    color: black;
-    padding: 0.2rem;
+.bottom_item_1 {
+    position: relative;
+    font-size: 1.3em;
+    font-weight: 400;
+    flex-wrap: wrap;
+    flex-grow: 2;
+    max-width: 15rem;
+    padding-bottom: 2rem;
+}
+
+.bottom_item_2 {
+    position: relative;
+    font-size: 1em;
 }
 
 /* ==============
@@ -336,49 +318,53 @@ footer {
 Mobile Query
 */
 
-/* Portrait and Landscape */
 @media screen and (max-width: 592px) {
-    .flexbox_center_text_container {
+    /* Start Center Container */
+    .center_container {
         position: fixed;
+        display: flex;
+        flex-direction: column;
         left: 50%;
         top: 50%;
         transform: translate(-50%, -50%);
     }
 
-    .flexbox_center_text_item-top {
+    .center_item_1 {
         font-weight: 500;
         font-size: 1.3rem;
         text-transform: uppercase;
     }
 
     .its_like {
-        float: left;
-        padding-left: 4em;
-        font-size: 1em;
+        float: none;
+        padding-left: 0;
+        margin-left: auto;
+        margin-right: auto;
     }
 
-    .flexbox_center_text_item-center {
-        font-size: 6em;
+    .center_item_2 {
+        font-size: 3em;
         font-weight: 400;
         text-transform: uppercase;
+        padding: 0.3em;
     }
 
     .planet_name {
-        letter-spacing: 0em;
-        padding-left: 3rem;
-        font-size: 1em;
-        color: blue;
+        letter-spacing: 0.4em;
+        padding-left: 0;
     }
 
-    .flexbox_center_text_item-bottom {
+    .center_item_3 {
         font-size: 1.3rem;
         font-weight: 500;
         text-transform: uppercase;
-        right: 11em;
+        padding: 0.3em;
     }
 
     .out_there {
-        float: right;
-        padding-right: 4em;
+        float: none;
+        padding-right: 0;
+        margin-left: auto;
+        margin-right: auto;
     }
 }

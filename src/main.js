@@ -53,7 +53,7 @@ const searchCity = async (cityName) => {
     }
 }
 
-// Async is promised based. Can use async/await instead of .then
+// Fetch is promised based. Can use async/await instead of .then
 const getCurrentWeather = async (latitude, longitude) => {
     const currentWeatherResponse = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${config.OPEN_WEATHER_API_KEY}&units=imperial`)
 
@@ -81,7 +81,7 @@ const renderDOM = (currentWeatherData) => {
     console.log("Weather Data:", currentWeatherData)
 }
 
-// Planet Algorithm will take into account temperature and forecast conditions and determine which planet to display
+// Planet Algorithm
 const determinePlanet = (filteredTemp, conditions) => {
     let planet
 
