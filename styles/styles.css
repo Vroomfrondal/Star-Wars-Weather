@@ -164,16 +164,17 @@ footer {
 
 .description_flex_item_1 {
     position: relative;
+    font-size: 1.3em;
     font-weight: 400;
     flex-wrap: wrap;
     flex-grow: 2;
     max-width: 15rem;
-    padding-bottom: 3rem;
+    padding-bottom: 2rem;
 }
 
 .planet_message_flex_item_2 {
     position: relative;
-    font-size: 0.3em;
+    font-size: 1em;
 }
 
 .flexbox_center_text_container {
@@ -257,113 +258,71 @@ footer {
    Background Image styling
    ============== 
 */
-.bg-image {
-    background: url("/images/loading-bg.png");
+
+/* Must use ID because class gets resassigned by JS */
+#image-container {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     height: 100vh;
     width: auto;
+}
+
+/* Loading Image */
+.bg-image {
+    background: url("/images/loading-bg.png");
     color: #f1e8d6;
-    opacity: 50%;
+    opacity: 70%;
 }
 
 /* Cold-day backgrounds */
 .Hoth-bg {
     background: url("/images/hoth.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    height: 100vh;
-    width: auto;
 }
 
 /* Pretty day backgrounds 60-80f */
 .coruscant-bg {
     background: url("/images/coruscant.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    height: 100vh;
-    width: auto;
     color: #fcfbf9;
 }
 
 .naboo-bg-warmer {
     background: url("/images/naboo1.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    height: 100vh;
-    width: auto;
     color: #fcfbf9;
 }
 
 .scariff-bg {
     background: url("/images/Scariff.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    height: 100vh;
-    width: auto;
+    color: #0a0803;
+    text-shadow: rgb(245, 245, 243) 1px 0 10px;
 }
 
 /* Forest or Foggy Day Backgrounds */
 .endor-bg {
     background: url("/images/endor1.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    height: 100vh;
-    width: auto;
     color: #fcfbf9;
 }
 
 .dagobah-bg {
     background: url("/images/dagobah.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    height: 100vh;
-    width: auto;
 }
 
 /* Rainy Backgrounds */
 .kamino-bg {
     background: url("/images/kamino.png");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    height: 100vh;
-    width: auto;
     color: #f1e8d6;
 }
 
 .kashyyk-bg {
     background: url("/images/kashyyyk.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    height: 100vh;
-    width: auto;
 }
 
 /* Really hot day Background */
 .bespin-bg {
     background: url("/images/bespin.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    height: 100vh;
-    width: auto;
 }
 
 .tattoine-bg {
     background: url("/images/tatooine.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    height: 100vh;
-    width: auto;
     color: #f1e8d6;
 }

@@ -10,21 +10,22 @@ const checkLocationPermission = () => {
             (error) => {
                 switch (error.code) {
                     case error.PERMISSION_DENIED:
-                        alert("Turn on location services or open the website on desktop")
+                        alert("Please enable location in device and browser settings to get local weather.")
                         break
                     case error.POSITION_UNAVAILABLE:
-                        alert("Turn on location services or open the website on desktop")
+                        alert("Please enable location in device and browser settings to get local weather.")
                         break
                     case error.TIMEOUT:
-                        alert("Turn on location services or open the website on desktop")
+                        alert("Please enable location in device and browser settings to get local weather.")
                         break
                     case error.UNKNOWN_ERROR:
-                        alert("Turn on location services or open the website on desktop")
+                        alert("Please enable location in device and browser settings to get local weather.")
                         break
                 }
             }
         )
     } else {
+        alert("Please enable location services to get local weather.")
         console.log("Please enable location services in the browser to use this app.")
     }
 }
@@ -41,12 +42,11 @@ const searchCity = async (cityName) => {
     // render response to screen if status is "OK"
     if (searchCityResponse.status === 200) {
         const cityData = await searchCityResponse.json()
-
-        //console.log("City data:", cityData.name)
+        console.log("City data:", cityData.name)
         renderDOM(cityData)
     } else {
         searchCityElement.value = ""
-        throw new Error("Sorry, OpenWeather seems to be having issues with their API. Try again later.")
+        throw new Error("Try again later or try a new city.")
     }
 }
 
@@ -66,13 +66,13 @@ const getCurrentWeather = async (latitude, longitude) => {
 const renderDOM = (currentWeatherData) => {
     const tempElement = document.querySelector("#temp")
     const planetElement = document.querySelector("#planet")
-    //const descriptionElement = document.querySelector("#description")
+    const descriptionElement = document.querySelector("#description")
     const filteredTemp = currentWeatherData.main.temp.toFixed()
     const conditions = currentWeatherData.weather[0].main
 
     planetElement.textContent = determinePlanet(filteredTemp, conditions)
-    tempElement.textContent = determineWeatherMessage(planet, filteredTemp, conditions)
-    //descriptionElement.textContent = determineFunMessage(planet)
+    tempElement.textContent = determineTempMessage(planet, filteredTemp, conditions)
+    descriptionElement.textContent = determineDescription(planet)
 
     // debug
     console.log("Weather Data:", currentWeatherData)
@@ -83,7 +83,7 @@ const determinePlanet = (filteredTemp, conditions) => {
     let planet
 
     // Determine conditions, if none, run temp algo
-    if (conditions === "Rain") {
+    if (conditions === "Rain" || conditions === "Thunderstorm") {
         planet = "Kamino"
         updateImage("kamino-bg")
     } else if (conditions === "Mist" || conditions === "Fog") {
@@ -116,7 +116,8 @@ const determinePlanet = (filteredTemp, conditions) => {
     return planet
 }
 
-const determineWeatherMessage = (planet, filteredTemp, conditions) => {
+// Dynamically decide which DOM messages to apply
+const determineTempMessage = (planet, filteredTemp, conditions) => {
     const currPlanet = planet.textContent.toLowerCase()
     const currWeather = ` ${filteredTemp}°F, ${conditions}?`
     let message = ""
@@ -140,8 +141,35 @@ const determineWeatherMessage = (planet, filteredTemp, conditions) => {
     return message
 }
 
+const determineDescription = (planet) => {
+    const currPlanet = planet.textContent.toLowerCase()
+    let description = ""
+
+    if (currPlanet === "kamino") {
+        description = "Wet."
+    } else if (currPlanet === "endor") {
+        description = "Temperate, grey, and foggy. Watch for Ewok's"
+    } else if (currPlanet === "hoth") {
+        description = "Cold, Icy, Freezing Desolation."
+    } else if (currPlanet === "naboo") {
+        description = "Temperate, dry, and fairly pleasant"
+    } else if (currPlanet === "coruscant") {
+        description = "Jedi meeting present. But outside is beautifully calm and clear."
+    } else if (currPlanet === "scariff") {
+        description = "Cloudy, clear, and beautiful outside."
+    } else if (currPlanet === "tattoine") {
+        description = "Hot, Dry, Occasional Sarlacc."
+    } else if (currPlanet === "bespin") {
+        description === "Do-or do not. There is no try. But just incase, stay inside, its HOT."
+    } else {
+        description = "Firing up the Millennium Falcon"
+    }
+
+    return description
+}
+
 // Dynamically apply CSS background to according planet
-updateImage = (nameOfClass) => {
+const updateImage = (nameOfClass) => {
     const imageElement = document.querySelector("#image-container")
 
     imageElement.className = ""
@@ -151,4 +179,6 @@ updateImage = (nameOfClass) => {
 checkLocationPermission()
 
 // Todo:
-// 1) complete determineWeatherMessage() based on current weather by updating #description element.
+// 1) complete determineWeatherDescription() based on current weather by updating #description element.
+// 2) create mobile viewports
+// 3) check when user clears search button and call localweather()
