@@ -32,6 +32,8 @@ const checkLocationPermission = () => {
 
 // Searching a custom city based on user input
 searchCityElement.addEventListener("search", (e) => {
+    e.preventDefault() // ??
+
     const cityName = `${searchCityElement.value.toLowerCase()}`
     searchCity(cityName)
 })
@@ -46,6 +48,7 @@ const searchCity = async (cityName) => {
         renderDOM(cityData)
     } else {
         searchCityElement.value = ""
+        searchCityElement.placeholder = "Try a different city."
         throw new Error("Try again later or try a new city.")
     }
 }
@@ -90,10 +93,10 @@ const determinePlanet = (filteredTemp, conditions) => {
         planet = "Endor"
         updateImage("endor-bg")
     } else {
-        if (filteredTemp <= 40) {
+        if (filteredTemp <= 35) {
             planet = "Hoth"
             updateImage("Hoth-bg")
-        } else if (filteredTemp <= 50) {
+        } else if (filteredTemp <= 55) {
             planet = "Naboo"
             updateImage("naboo-bg-warmer")
         } else if (filteredTemp <= 65) {
@@ -148,19 +151,19 @@ const determineDescription = (planet) => {
     if (currPlanet === "kamino") {
         description = "Wet."
     } else if (currPlanet === "endor") {
-        description = "Temperate, grey, and foggy. Watch for Ewok's"
+        description = "Temperate foggy. Watch for Ewok's"
     } else if (currPlanet === "hoth") {
         description = "Cold, Icy, Freezing Desolation."
     } else if (currPlanet === "naboo") {
         description = "Temperate, dry, and fairly pleasant"
     } else if (currPlanet === "coruscant") {
-        description = "Jedi meeting present. But outside is beautifully calm and clear."
+        description = "Jedi meeting present. But outside is beautifully calm."
     } else if (currPlanet === "scariff") {
         description = "Cloudy, clear, and beautiful outside."
     } else if (currPlanet === "tattoine") {
         description = "Hot, Dry, Occasional Sarlacc."
     } else if (currPlanet === "bespin") {
-        description === "Do-or do not. There is no try. But just incase, stay inside, its HOT."
+        description = "Visit Mos Eisley for a drink, its HOT."
     } else {
         description = "Firing up the Millennium Falcon"
     }

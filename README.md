@@ -1,19 +1,45 @@
-# StarWars-Weather (in development)
+# Star Wars Weather (In Mobile-Development)
 
-Inspired by Tom Scott, this weather app takes on a Star Wars Biome twist that is dependent upon your local weather outside.
+This weather app takes on a Star Wars Biome twist that is dependent upon your local weather outside. Or search for a city by name.
 
 ### Sample Images:
 
--   Clear and temperate?
-    <img width="1001" alt="Screen Shot 2022-03-17 at 12 44 11 AM" src="https://user-images.githubusercontent.com/49052244/158744938-3c89cfc8-4796-4523-97ad-431c29be3cc1.png">
+Fairly Pleasant?
+<img width="1408" alt="Screen Shot 2022-03-17 at 9 46 59 PM" src="https://user-images.githubusercontent.com/49052244/158927961-e42538f1-5dcc-4c3b-87d4-e7d46098cd98.png">
 
--   Raining?
-    <img width="1003" alt="Screen Shot 2022-03-17 at 12 45 20 AM" src="https://user-images.githubusercontent.com/49052244/158745004-72fbcb51-c20d-45ef-ac47-4283f9fff4f5.png">
+Raining or Thunderstorms?
+<img width="1408" alt="Screen Shot 2022-03-17 at 9 42 04 PM" src="https://user-images.githubusercontent.com/49052244/158927465-7032eeea-952c-4eab-a4f4-b32630b2bee9.png">
 
--   Freezing outside?
-    <img width="1001" alt="Screen Shot 2022-03-17 at 12 44 23 AM" src="https://user-images.githubusercontent.com/49052244/158745045-ba30a325-eaf1-483e-94f8-5dd59c736c6d.png">
+Cloudy and in the 60's?
+<img width="1409" alt="Screen Shot 2022-03-17 at 9 32 18 PM" src="https://user-images.githubusercontent.com/49052244/158926393-7aed9824-7632-4265-becb-420af84430d0.png">
 
-#### Resources
+Foggy?
+<img width="1406" alt="Screen Shot 2022-03-17 at 9 30 41 PM" src="https://user-images.githubusercontent.com/49052244/158926189-18917688-3975-4b1c-85e6-9953e099e065.png">
+
+Freezing outside?
+<img width="1411" alt="Screen Shot 2022-03-17 at 9 25 59 PM" src="https://user-images.githubusercontent.com/49052244/158925714-fe50251d-2926-4511-9be1-355239d9ef8a.png">
+
+Hot and dry?
+<img width="1407" alt="Screen Shot 2022-03-17 at 9 28 35 PM" src="https://user-images.githubusercontent.com/49052244/158925966-3d6ba6d9-0879-4d5d-b93f-5abc63ee413a.png">
+
+Burning hot?
+<img width="1408" alt="Screen Shot 2022-03-17 at 9 59 42 PM" src="https://user-images.githubusercontent.com/49052244/158929193-a61a9942-95a9-4708-b997-315f13fc9bbd.png">
+
+### Resources
 
 -   [OpenWeather API](https://openweathermap.org/)
--   Tom Scott Star Wars Weather that [closed down](https://www.tomscott.com/weather/starwars/)
+-   Inspiration by Tom Scott's Star Wars Weather that [closed down](https://www.tomscott.com/weather/starwars/)
+
+### If Cloning
+
+-   Generate your own API key at [OpenWeatherAPI](https://openweathermap.org/api)
+-   Create a file in the /src folder titled "config.js"
+-   Copy and paste the following with your api key in that file:
+
+```json
+const config = {
+    OPEN_WEATHER_API_KEY: "Your Key",
+}
+```
+
+-   Project should be up and running!
