@@ -1,4 +1,4 @@
-# Star Wars Weather (In Mobile-Development)
+# Star Wars Weather
 
 This weather app takes on a Star Wars Biome twist that is dependent upon your local weather outside. Or search for a city by name.
 
