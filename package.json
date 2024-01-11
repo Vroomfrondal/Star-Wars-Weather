@@ -1,0 +1,15 @@
+{
+    "name": "star-wars-weather",
+    "version": "1.0.0",
+    "description": "This weather app takes on a Star Wars Biome twist that is dependent upon your local weather outside. Or search for a city by name.",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "dotenv": "^16.3.1"
+    }
+}
