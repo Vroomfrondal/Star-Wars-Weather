@@ -47,10 +47,8 @@ searchCityElement.addEventListener('search', (e) => {
 })
 
 const searchCity = async (cityName) => {
-    const env = process.env.OPEN_WEATHER_API_KEY
-
     const searchCityResponse = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${process.env.OPEN_WEATHER_API_KEY}&units=imperial`
+        `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=a97e258bb78f28ec96c19ba4c94f087b&units=imperial`
     )
 
     // render response to screen if status is "OK"
@@ -68,7 +66,7 @@ const searchCity = async (cityName) => {
 // Fetch is promised based. Can use async/await instead of .then
 const getCurrentWeather = async (latitude, longitude) => {
     const currentWeatherResponse = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${process.env.OPEN_WEATHER_API_KEY}&units=imperial`
+        `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=a97e258bb78f28ec96c19ba4c94f087b&units=imperial`
     )
 
     // render response to screen if status is "OK"
