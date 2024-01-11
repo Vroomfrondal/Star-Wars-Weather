@@ -2,10 +2,6 @@
 
 This weather app takes on a Star Wars Biome twist that is dependent upon your local weather outside. Or search for a city by name.
 
-## Working Link
-
-[Star Wars Weather](https://starwars-weather.netlify.app/)
-
 ### Sample Images:
 
 Fairly Pleasant?
